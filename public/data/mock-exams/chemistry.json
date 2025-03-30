@@ -1,0 +1,15 @@
+[
+    {
+      "question": "What is the chemical symbol for Sodium?",
+      "choices": ["Na", "S", "So", "Sn"],
+      "answer": "Na",
+      "explanation": "Sodium's chemical symbol is Na, derived from Latin 'Natrium'."
+    },
+    {
+      "question": "Which gas is produced in photosynthesis?",
+      "choices": ["Carbon Dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+      "answer": "Oxygen",
+      "explanation": "Oxygen is released as a byproduct of photosynthesis."
+    }
+  ]
+  

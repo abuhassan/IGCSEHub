@@ -1,0 +1,15 @@
+[
+    {
+      "question": "What is the unit of force?",
+      "choices": ["Joule", "Watt", "Newton", "Pascal"],
+      "answer": "Newton",
+      "explanation": "The unit of force is the Newton (N)."
+    },
+    {
+      "question": "Speed = ?",
+      "choices": ["Mass / Time", "Distance / Time", "Force x Time", "Work / Distance"],
+      "answer": "Distance / Time",
+      "explanation": "Speed is calculated as distance divided by time."
+    }
+  ]
+  

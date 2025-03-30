@@ -1,0 +1,15 @@
+[
+    {
+      "question": "What is the value of x in the equation 2x + 3 = 11?",
+      "choices": ["2", "4", "6", "8"],
+      "answer": "4",
+      "explanation": "2x + 3 = 11 ⇒ 2x = 8 ⇒ x = 4"
+    },
+    {
+      "question": "Simplify: 3(2x - 1) + 4",
+      "choices": ["6x + 1", "6x + 7", "2x + 1", "5x + 3"],
+      "answer": "6x + 1",
+      "explanation": "3(2x - 1) + 4 = 6x - 3 + 4 = 6x + 1"
+    }
+  ]
+  

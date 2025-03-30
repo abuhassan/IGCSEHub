@@ -1,0 +1,33 @@
+[
+    {
+      "question": "What is the process by which green plants make their own food?",
+      "choices": ["Photosynthesis", "Respiration", "Transpiration", "Digestion"],
+      "answer": "Photosynthesis",
+      "explanation": "Photosynthesis is the process where plants use sunlight to synthesize food from carbon dioxide and water."
+    },
+    {
+      "question": "Which part of the cell contains genetic material?",
+      "choices": ["Cytoplasm", "Nucleus", "Cell membrane", "Chloroplast"],
+      "answer": "Nucleus",
+      "explanation": "The nucleus contains DNA, which carries genetic information."
+    },
+    {
+      "question": "What gas is absorbed by plants during photosynthesis?",
+      "choices": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+      "answer": "Carbon Dioxide",
+      "explanation": "Plants absorb carbon dioxide from the atmosphere for use in photosynthesis."
+    },
+    {
+      "question": "Which of the following is NOT a component of blood?",
+      "choices": ["Red blood cells", "White blood cells", "Platelets", "Nephrons"],
+      "answer": "Nephrons",
+      "explanation": "Nephrons are the functional units of the kidneys, not part of blood."
+    },
+    {
+      "question": "What is the main function of the small intestine?",
+      "choices": ["Water absorption", "Digestion of food", "Production of insulin", "Oxygen transport"],
+      "answer": "Digestion of food",
+      "explanation": "The small intestine is responsible for the majority of nutrient digestion and absorption."
+    }
+  ]
+  
