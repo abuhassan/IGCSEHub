@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IGCSEHub
 
-## Getting Started
+**IGCSEHub** is a modern, student-focused SaaS platform to help learners prepare for the International General Certificate of Secondary Education (IGCSE). The app supports private candidates, tutors, and parents by offering mock exams, study tools, and educational content.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+- 🔐 **Clerk Authentication with Role-Based Access**  
+  Admin and Student roles managed via Clerk (no database yet)
+
+- 🧠 **Mock Exams by Subject**  
+  Take quizzes by subject, view scores, and review answers
+
+- 📅 **Checkpoint Tracker**  
+  Track progress on weekly goals with visual progress bar
+
+- 📰 **Blog System (JSON-based)**  
+  Public blog articles to help users learn about IGCSE, study tips, and parent guidance
+
+- 📂 **Client-Side Blog Rendering**  
+  Blog posts stored in `/public/blog/posts.json` for easy deployment (no `fs` or markdown parsing needed)
+
+---
+
+## 🧱 Tech Stack
+
+- **Next.js 15** with App Router (React 19)
+- **Tailwind CSS + Shadcn UI** for styling
+- **Clerk** for authentication & role management
+- **TypeScript** for strict type safety
+- **LocalStorage** for saving quiz and checkpoint progress
+
+---
+
+## 🛠 How to Run Locally
+
+1. Clone the repo:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/igcsehub.git
+cd igcsehub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create `.env` file with Clerk keys (skip DB for now)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the dev server:
+```bash
+npm run dev
+```
 
-## Learn More
+Visit [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📌 Roadmap (Upcoming)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ Finish JSON-based blog viewer
+- ⏳ Subject detail pages with guides
+- ⏳ Contribution system for educators
+- ⏳ Analytics dashboard for admins
+- ⏳ Optional PostgreSQL integration
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
+MIT or custom license (TBD)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+> Built with ❤️ by Abu Hazan — Educational support for IGCSE students everywhere.
