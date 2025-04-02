@@ -1,55 +1,14 @@
+// FILE: /app/mock-exams/[subject]/page.tsx
+
 'use client'
 
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-// Sample fallback question (replace with fetch from JSON later)
-const sampleQuestions = {
-  math: [
-    {
-      question: 'What is the value of x in the equation 2x + 3 = 11?',
-      choices: ['2', '4', '6', '8'],
-      answer: '4',
-      explanation: '2x + 3 = 11 ⇒ 2x = 8 ⇒ x = 4',
-    },
-    {
-      question: 'Simplify: 3(2x - 1) + 4',
-      choices: ['6x + 1', '6x + 7', '2x + 1', '5x + 3'],
-      answer: '6x + 1',
-      explanation: '3(2x - 1) + 4 = 6x - 3 + 4 = 6x + 1',
-    },
-  ],
-  biology: [
-    {
-      question: 'What process do plants use to make food?',
-      choices: ['Respiration', 'Digestion', 'Photosynthesis', 'Fermentation'],
-      answer: 'Photosynthesis',
-      explanation: 'Plants use photosynthesis to convert sunlight into food.',
-    },
-  ],
-  chemistry: [
-    {
-      question: "What is the chemical symbol for Sodium?",
-      choices: ["Na", "S", "So", "Sn"],
-      answer: "Na",
-      explanation: "Sodium's symbol is Na from Latin 'Natrium'."
-    },
-    // Add more
-  ],
-  physics: [
-    {
-      question: "What is the unit of force?",
-      choices: ["Joule", "Watt", "Newton", "Pascal"],
-      answer: "Newton",
-      explanation: "The SI unit of force is Newton (N)."
-    },
-    // Add more
-  ]
-}
-
-export default function QuizPage() {
+export default function SubjectQuizPage() {
   const { subject } = useParams()
   const router = useRouter()
   const [questions, setQuestions] = useState<any[]>([])
@@ -57,27 +16,59 @@ export default function QuizPage() {
   const [score, setScore] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [showResult, setShowResult] = useState(false)
+  const [answers, setAnswers] = useState<any[]>([])
 
   useEffect(() => {
-    // Load questions based on subject param (later: fetch from /data)
-    const qList = sampleQuestions[subject as keyof typeof sampleQuestions]
-    if (!qList) {
-      router.push('/mock-exams')
-      return
+    const fetchQuestions = async () => {
+      try {
+        const res = await fetch(`/data/mock-exams/${subject}.json`)
+        if (!res.ok) throw new Error('Not found')
+        const data = await res.json()
+        setQuestions(data)
+      } catch {
+        router.push('/mock-exams')
+      }
     }
-    setQuestions(qList)
+    fetchQuestions()
   }, [subject, router])
 
+  useEffect(() => {
+    if (showResult && subject) {
+      const subjectKey = subject as string
+      const key = 'mock-results'
+      const stored = JSON.parse(localStorage.getItem(key) || '{}')
+      localStorage.setItem(key, JSON.stringify({ ...stored, [subjectKey]: Math.round((score / questions.length) * 100) }))
+
+      const answerKey = 'mock-answers'
+      const answerStore = JSON.parse(localStorage.getItem(answerKey) || '{}')
+      localStorage.setItem(answerKey, JSON.stringify({ ...answerStore, [subjectKey]: answers }))
+    }
+  }, [showResult, subject, score, questions.length, answers])
+
   const handleSelect = (choice: string) => {
-    if (selected) return // prevent double click
+    if (selected) return
     setSelected(choice)
-    const correct = questions[currentIndex].answer
-    if (choice === correct) setScore((prev) => prev + 1)
+
+    const currentQuestion = questions[currentIndex]
+    const correct = currentQuestion.answer
+    const explanation = currentQuestion.explanation
+
+    const record = {
+      question: currentQuestion.question,
+      selected: choice,
+      correct,
+      explanation
+    }
+    setAnswers((prev) => [...prev, record])
+
+    if (choice === correct) {
+      setScore(score + 1)
+    }
   }
 
   const handleNext = () => {
     if (currentIndex + 1 < questions.length) {
-      setCurrentIndex((prev) => prev + 1)
+      setCurrentIndex(currentIndex + 1)
       setSelected(null)
     } else {
       setShowResult(true)
@@ -91,7 +82,18 @@ export default function QuizPage() {
       <div className="p-6 space-y-4">
         <h1 className="text-2xl font-bold">Results</h1>
         <p className="text-lg">You scored {score} out of {questions.length}</p>
-        <Button onClick={() => router.push('/mock-exams')}>Back to Subjects</Button>
+
+        <div className="flex flex-wrap gap-4 pt-2">
+          <Button onClick={() => router.push('/mock-exams')} variant="secondary">
+            ← Back to Subjects
+          </Button>
+          <Button onClick={() => router.push('/dashboard')} variant="outline">
+            🏠 Back to Dashboard
+          </Button>
+          <Button onClick={() => router.push(`/mock-exams/review/${subject}`)}>
+            📘 Review My Answers
+          </Button>
+        </div>
       </div>
     )
   }
@@ -101,9 +103,7 @@ export default function QuizPage() {
     <div className="p-6 space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>
-            Question {currentIndex + 1} of {questions.length}
-          </CardTitle>
+          <CardTitle>Question {currentIndex + 1} of {questions.length}</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="mb-4 font-medium">{currentQ.question}</p>
@@ -128,12 +128,8 @@ export default function QuizPage() {
 
           {selected && (
             <div className="mt-4 text-sm text-gray-600">
-              <p>
-                <strong>Correct answer:</strong> {currentQ.answer}
-              </p>
-              <p>
-                <strong>Explanation:</strong> {currentQ.explanation}
-              </p>
+              <p><strong>Correct answer:</strong> {currentQ.answer}</p>
+              <p><strong>Explanation:</strong> {currentQ.explanation}</p>
               <Button onClick={handleNext} className="mt-4">
                 {currentIndex + 1 < questions.length ? 'Next Question' : 'See Results'}
               </Button>

@@ -1,15 +1,32 @@
 [
-    {
-      "question": "What is the unit of force?",
-      "choices": ["Joule", "Watt", "Newton", "Pascal"],
-      "answer": "Newton",
-      "explanation": "The unit of force is the Newton (N)."
-    },
-    {
-      "question": "Speed = ?",
-      "choices": ["Mass / Time", "Distance / Time", "Force x Time", "Work / Distance"],
-      "answer": "Distance / Time",
-      "explanation": "Speed is calculated as distance divided by time."
-    }
-  ]
-  
+  {
+    "question": "What is the SI unit of force?",
+    "choices": ["Joule", "Watt", "Newton", "Pascal"],
+    "answer": "Newton",
+    "explanation": "The SI unit of force is the Newton (N), named after Sir Isaac Newton."
+  },
+  {
+    "question": "What instrument is used to measure electric current?",
+    "choices": ["Voltmeter", "Ammeter", "Thermometer", "Galvanometer"],
+    "answer": "Ammeter",
+    "explanation": "An ammeter is used to measure the flow of electric current in a circuit."
+  },
+  {
+    "question": "Which of the following is a scalar quantity?",
+    "choices": ["Velocity", "Displacement", "Force", "Temperature"],
+    "answer": "Temperature",
+    "explanation": "Temperature has magnitude only and no direction, making it a scalar quantity."
+  },
+  {
+    "question": "What type of energy is stored in a stretched spring?",
+    "choices": ["Thermal energy", "Kinetic energy", "Gravitational potential energy", "Elastic potential energy"],
+    "answer": "Elastic potential energy",
+    "explanation": "Elastic potential energy is stored when an object is deformed elastically, such as in a stretched spring."
+  },
+  {
+    "question": "What is the speed of light in a vacuum?",
+    "choices": ["3 x 10^8 m/s", "3 x 10^6 m/s", "3 x 10^4 m/s", "3 x 10^2 m/s"],
+    "answer": "3 x 10^8 m/s",
+    "explanation": "The speed of light in a vacuum is approximately 3 × 10^8 meters per second."
+  }
+]

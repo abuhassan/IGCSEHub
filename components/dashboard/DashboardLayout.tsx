@@ -11,7 +11,9 @@ const navItems = [
   { label: 'Subjects', href: '/subjects' },
   { label: 'Checkpoints', href: '/checkpoints' },
   { label: 'Planner', href: '/planner' },
+  { label: 'Mock Exams', href: '/mock-exams' }, // ✅ new item
 ]
+
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()

@@ -24,5 +24,10 @@ export default clerkMiddleware(async (auth, req) => {
 })
 
 export const config = {
-  matcher: ['/((?!_next|.*\\..*|favicon.ico).*)'],
+  matcher: [
+    '/((?!_next|.*\\..*|favicon.ico).*)',
+    // add this line to make blog public
+    '/blog(.*)',
+  ],
 }
+

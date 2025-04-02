@@ -1,15 +1,32 @@
 [
-    {
-      "question": "What is the chemical symbol for Sodium?",
-      "choices": ["Na", "S", "So", "Sn"],
-      "answer": "Na",
-      "explanation": "Sodium's chemical symbol is Na, derived from Latin 'Natrium'."
-    },
-    {
-      "question": "Which gas is produced in photosynthesis?",
-      "choices": ["Carbon Dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
-      "answer": "Oxygen",
-      "explanation": "Oxygen is released as a byproduct of photosynthesis."
-    }
-  ]
-  
+  {
+    "question": "What is the chemical symbol for Sodium?",
+    "choices": ["So", "Na", "Sn", "S"],
+    "answer": "Na",
+    "explanation": "The chemical symbol for Sodium is Na, from the Latin word 'Natrium'."
+  },
+  {
+    "question": "Which of the following is a noble gas?",
+    "choices": ["Oxygen", "Hydrogen", "Nitrogen", "Neon"],
+    "answer": "Neon",
+    "explanation": "Neon is a noble gas found in Group 18 of the periodic table."
+  },
+  {
+    "question": "What is the pH value of a neutral solution?",
+    "choices": ["0", "7", "14", "1"],
+    "answer": "7",
+    "explanation": "A neutral solution has a pH of 7."
+  },
+  {
+    "question": "What is the main gas responsible for causing acid rain?",
+    "choices": ["Carbon dioxide", "Oxygen", "Sulfur dioxide", "Nitrogen"],
+    "answer": "Sulfur dioxide",
+    "explanation": "Sulfur dioxide reacts with water in the atmosphere to form sulfuric acid, causing acid rain."
+  },
+  {
+    "question": "Which of the following substances is an element?",
+    "choices": ["Water", "Carbon", "Salt", "Air"],
+    "answer": "Carbon",
+    "explanation": "Carbon is a pure element, whereas water, salt, and air are mixtures or compounds."
+  }
+]

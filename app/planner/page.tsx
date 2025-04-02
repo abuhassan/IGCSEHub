@@ -1,27 +1,15 @@
+// FILE: /app/planner/page.tsx
+
 'use client'
 
-import { useUser } from '@clerk/nextjs'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Progress } from '@/components/ui/progress'
 
-// Day types
-type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun'
-const days: Day[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-const slots = ['Morning', 'Afternoon', 'Evening']
-
-// Default static schedule
-const defaultSchedule: Record<Day, Record<string, string>> = {
-  Mon: { Morning: 'Mathematics', Afternoon: 'English', Evening: 'Free' },
-  Tue: { Morning: 'Biology', Afternoon: 'Chemistry', Evening: 'Revision' },
+const initialPlanner = {
+  Mon: { Morning: '', Afternoon: '', Evening: '' },
+  Tue: { Morning: '', Afternoon: '', Evening: '' },
   Wed: { Morning: '', Afternoon: '', Evening: '' },
   Thu: { Morning: '', Afternoon: '', Evening: '' },
   Fri: { Morning: '', Afternoon: '', Evening: '' },
@@ -29,108 +17,77 @@ const defaultSchedule: Record<Day, Record<string, string>> = {
   Sun: { Morning: '', Afternoon: '', Evening: '' },
 }
 
+type Planner = typeof initialPlanner
+
+type TimeSlot = 'Morning' | 'Afternoon' | 'Evening'
+
+type DayKey = keyof Planner
+
 export default function PlannerPage() {
-  const { isLoaded, isSignedIn } = useUser()
-  const router = useRouter()
-
-  const [schedule, setSchedule] = useState(defaultSchedule)
-  const [open, setOpen] = useState(false)
-  const [editDay, setEditDay] = useState<Day | null>(null)
-  const [editSlot, setEditSlot] = useState<string | null>(null)
-  const [inputValue, setInputValue] = useState('')
+  const [planner, setPlanner] = useState<Planner>(initialPlanner)
 
   useEffect(() => {
-    if (isLoaded && !isSignedIn) {
-      router.push('/sign-in')
-    }
-  }, [isLoaded, isSignedIn])
-
-  // Load from localStorage
-  useEffect(() => {
-    const stored = localStorage.getItem('weekly-planner')
+    const stored = localStorage.getItem('study-planner')
     if (stored) {
       try {
-        setSchedule(JSON.parse(stored))
+        setPlanner(JSON.parse(stored))
       } catch {
-        console.warn('Invalid planner data')
+        setPlanner(initialPlanner)
       }
     }
   }, [])
 
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem('weekly-planner', JSON.stringify(schedule))
-  }, [schedule])
-
-  const handleEdit = (day: Day, slot: string) => {
-    setEditDay(day)
-    setEditSlot(slot)
-    setInputValue(schedule[day][slot] || '')
-    setOpen(true)
-  }
-
-  const handleSave = () => {
-    if (editDay && editSlot) {
-      setSchedule((prev) => ({
-        ...prev,
-        [editDay]: {
-          ...prev[editDay],
-          [editSlot]: inputValue,
-        },
-      }))
+  const handleChange = (day: DayKey, slot: TimeSlot, value: string) => {
+    const updated = {
+      ...planner,
+      [day]: {
+        ...planner[day],
+        [slot]: value,
+      },
     }
-    setOpen(false)
+    setPlanner(updated)
+    localStorage.setItem('study-planner', JSON.stringify(updated))
   }
 
-  const handleReset = () => {
-    const confirmReset = confirm('Clear the entire week planner?')
-    if (confirmReset) {
-      setSchedule(defaultSchedule)
-      localStorage.removeItem('weekly-planner')
-    }
+  const resetPlanner = () => {
+    setPlanner(initialPlanner)
+    localStorage.setItem('study-planner', JSON.stringify(initialPlanner))
   }
 
-  if (!isLoaded || !isSignedIn) {
-    return <p className="text-center mt-10">Loading planner...</p>
-  }
+  const filledSlots = Object.values(planner).flatMap(day => Object.values(day)).filter(v => v.trim() !== '').length
+  const totalSlots = Object.keys(initialPlanner).length * 3
+  const progressPercent = Math.round((filledSlots / totalSlots) * 100)
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Weekly Planner</h1>
+    <div className="p-6 space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold mb-2">📅 Study Planner</h1>
+        <p className="text-sm text-muted-foreground mb-1">You've filled {filledSlots} of {totalSlots} slots</p>
+        <Progress value={progressPercent} className="h-2" />
+      </div>
 
-      <button
-        onClick={handleReset}
-        className="mb-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-      >
-        Reset Planner
-      </button>
-
-      <div className="overflow-auto">
-        <table className="table-auto border-collapse w-full">
+      <div className="overflow-x-auto">
+        <table className="min-w-full border text-sm">
           <thead>
-            <tr>
-              <th className="p-3 text-left border-b">Time</th>
-              {days.map((day) => (
-                <th key={day} className="p-3 text-center border-b">{day}</th>
-              ))}
+            <tr className="bg-gray-100">
+              <th className="border px-2 py-1">Day</th>
+              <th className="border px-2 py-1">Morning</th>
+              <th className="border px-2 py-1">Afternoon</th>
+              <th className="border px-2 py-1">Evening</th>
             </tr>
           </thead>
           <tbody>
-            {slots.map((slot) => (
-              <tr key={slot}>
-                <td className="p-3 font-medium border-r border-b">{slot}</td>
-                {days.map((day) => (
-                  <td key={`${day}-${slot}`} className="p-2 border-b border-r text-center">
-                    <Card
-                      className="min-h-[60px] cursor-pointer hover:bg-blue-50 transition"
-                      onClick={() => handleEdit(day, slot)}
-                    >
-                      <CardContent className="p-2 text-sm text-gray-700">
-                        {schedule[day][slot] || (
-                          <span className="text-gray-400 italic">Click to add</span>
-                        )}
-                      </CardContent>
-                    </Card>
+            {Object.entries(planner).map(([day, slots]) => (
+              <tr key={day}>
+                <td className="border px-2 py-1 font-medium">{day}</td>
+                {(Object.keys(slots) as TimeSlot[]).map((slot) => (
+                  <td key={slot} className="border px-2 py-1">
+                    <Input
+                      value={slots[slot]}
+                      placeholder="-"
+                      onChange={(e) => handleChange(day as DayKey, slot, e.target.value)}
+                      className="hover:border-blue-500 focus:border-blue-600 focus:ring-0"
+                    />
                   </td>
                 ))}
               </tr>
@@ -139,26 +96,13 @@ export default function PlannerPage() {
         </table>
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Edit {editDay} – {editSlot}</DialogTitle>
-          </DialogHeader>
-          <Input
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Enter subject or activity"
-          />
-          <div className="flex justify-end mt-4">
-            <button
-              onClick={handleSave}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Save
-            </button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <Button variant="destructive" onClick={resetPlanner}>
+        🔁 Reset Planner
+      </Button>
+
+      <Button variant="outline" onClick={() => window.location.href = '/dashboard'}>
+        🏠 Back to Dashboard
+      </Button>
     </div>
   )
 }
