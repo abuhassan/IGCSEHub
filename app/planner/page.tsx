@@ -3,106 +3,119 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import Link from 'next/link'
 import { Progress } from '@/components/ui/progress'
 
-const initialPlanner = {
+interface Stream {
+  slug: string
+  name: string
+  description: string
+  subjects: string[]
+  groupStructure?: { [group: string]: string[] }
+}
+
+type TimeSlot = 'Morning' | 'Afternoon' | 'Evening'
+type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri'
+
+const defaultSchedule: Record<Day, Record<TimeSlot, string>> = {
   Mon: { Morning: '', Afternoon: '', Evening: '' },
   Tue: { Morning: '', Afternoon: '', Evening: '' },
   Wed: { Morning: '', Afternoon: '', Evening: '' },
   Thu: { Morning: '', Afternoon: '', Evening: '' },
-  Fri: { Morning: '', Afternoon: '', Evening: '' },
-  Sat: { Morning: '', Afternoon: '', Evening: '' },
-  Sun: { Morning: '', Afternoon: '', Evening: '' },
+  Fri: { Morning: '', Afternoon: '', Evening: '' }
 }
 
-type Planner = typeof initialPlanner
-
-type TimeSlot = 'Morning' | 'Afternoon' | 'Evening'
-
-type DayKey = keyof Planner
-
 export default function PlannerPage() {
-  const [planner, setPlanner] = useState<Planner>(initialPlanner)
+  const [schedule, setSchedule] = useState(defaultSchedule)
+  const [streamSubjects, setStreamSubjects] = useState<string[]>([])
 
   useEffect(() => {
     const stored = localStorage.getItem('study-planner')
     if (stored) {
-      try {
-        setPlanner(JSON.parse(stored))
-      } catch {
-        setPlanner(initialPlanner)
-      }
+      setSchedule(JSON.parse(stored))
     }
   }, [])
 
-  const handleChange = (day: DayKey, slot: TimeSlot, value: string) => {
-    const updated = {
-      ...planner,
-      [day]: {
-        ...planner[day],
-        [slot]: value,
-      },
+  useEffect(() => {
+    const streamData = localStorage.getItem('selected-stream')
+    if (streamData) {
+      const stream: Stream = JSON.parse(streamData)
+      const allSubjects = stream.groupStructure
+        ? Object.values(stream.groupStructure).flat()
+        : stream.subjects
+      setStreamSubjects(allSubjects)
     }
-    setPlanner(updated)
+  }, [])
+
+  const handleChange = (day: Day, slot: TimeSlot, value: string) => {
+    const updated = {
+      ...schedule,
+      [day]: {
+        ...schedule[day],
+        [slot]: value
+      }
+    }
+    setSchedule(updated)
     localStorage.setItem('study-planner', JSON.stringify(updated))
   }
 
   const resetPlanner = () => {
-    setPlanner(initialPlanner)
-    localStorage.setItem('study-planner', JSON.stringify(initialPlanner))
+    localStorage.removeItem('study-planner')
+    setSchedule(defaultSchedule)
   }
 
-  const filledSlots = Object.values(planner).flatMap(day => Object.values(day)).filter(v => v.trim() !== '').length
-  const totalSlots = Object.keys(initialPlanner).length * 3
-  const progressPercent = Math.round((filledSlots / totalSlots) * 100)
+  const filledCount = Object.values(schedule).flatMap(slot => Object.values(slot)).filter(Boolean).length
+  const totalSlots = Object.keys(schedule).length * 3
+  const percent = (filledCount / totalSlots) * 100
 
   return (
     <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold mb-2">📅 Study Planner</h1>
-        <p className="text-sm text-muted-foreground mb-1">You've filled {filledSlots} of {totalSlots} slots</p>
-        <Progress value={progressPercent} className="h-2" />
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">🗓️ Study Planner</h1>
+        <Button onClick={resetPlanner} variant="outline">Reset</Button>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full border text-sm">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-2 py-1">Day</th>
-              <th className="border px-2 py-1">Morning</th>
-              <th className="border px-2 py-1">Afternoon</th>
-              <th className="border px-2 py-1">Evening</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(planner).map(([day, slots]) => (
-              <tr key={day}>
-                <td className="border px-2 py-1 font-medium">{day}</td>
-                {(Object.keys(slots) as TimeSlot[]).map((slot) => (
-                  <td key={slot} className="border px-2 py-1">
-                    <Input
-                      value={slots[slot]}
-                      placeholder="-"
-                      onChange={(e) => handleChange(day as DayKey, slot, e.target.value)}
-                      className="hover:border-blue-500 focus:border-blue-600 focus:ring-0"
-                    />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="space-y-2">
+        <p className="text-sm text-muted-foreground">
+          {filledCount} of {totalSlots} slots filled
+        </p>
+        <Progress value={percent} className="h-2" />
       </div>
 
-      <Button variant="destructive" onClick={resetPlanner}>
-        🔁 Reset Planner
-      </Button>
+      <div className="grid gap-6">
+        {Object.entries(schedule).map(([day, slots]) => (
+          <Card key={day}>
+            <CardHeader>
+              <CardTitle>{day}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {Object.entries(slots).map(([slot, subject]) => (
+                <div key={slot} className="flex items-center gap-2 mb-3">
+                  <p className="w-24 text-sm text-muted-foreground">{slot}</p>
+                  <select
+                    className="w-full px-2 py-1 border rounded text-sm"
+                    value={subject}
+                    onChange={(e) => handleChange(day as Day, slot as TimeSlot, e.target.value)}
+                  >
+                    <option value="">-- Select Subject --</option>
+                    {streamSubjects.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
-      <Button variant="outline" onClick={() => window.location.href = '/dashboard'}>
-        🏠 Back to Dashboard
-      </Button>
+      <div className="pt-4">
+        <Link href="/dashboard" className="text-sm text-blue-600 underline">
+          ← Back to Dashboard
+        </Link>
+      </div>
     </div>
   )
 }

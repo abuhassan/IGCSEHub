@@ -1,0 +1,63 @@
+[
+    {
+      "question": "What does 'CPU' stand for?",
+      "choices": ["Central Processing Unit", "Computer Power Unit", "Central Power Unit", "Computer Processing Utility"],
+      "answer": "Central Processing Unit",
+      "explanation": "CPU stands for Central Processing Unit — the brain of the computer."
+    },
+    {
+      "question": "Which device is used to input printed text into a computer?",
+      "choices": ["Printer", "Monitor", "Scanner", "Keyboard"],
+      "answer": "Scanner",
+      "explanation": "A scanner digitizes printed documents into a computer-readable format."
+    },
+    {
+      "question": "What is the function of RAM in a computer?",
+      "choices": ["Store data permanently", "Perform calculations", "Store temporary data", "Control input devices"],
+      "answer": "Store temporary data",
+      "explanation": "RAM temporarily holds data that is actively being used or processed."
+    },
+    {
+      "question": "Which of these is an output device?",
+      "choices": ["Mouse", "Monitor", "Scanner", "Microphone"],
+      "answer": "Monitor",
+      "explanation": "A monitor displays information — it's an output device."
+    },
+    {
+      "question": "What is software?",
+      "choices": ["Physical parts of a computer", "Input devices", "Instructions that tell the computer what to do", "Data storage"],
+      "answer": "Instructions that tell the computer what to do",
+      "explanation": "Software is a set of instructions that perform tasks on a computer."
+    },
+    {
+      "question": "Which of the following is a type of secondary storage?",
+      "choices": ["ROM", "RAM", "Hard disk", "CPU"],
+      "answer": "Hard disk",
+      "explanation": "A hard disk is a form of secondary, long-term data storage."
+    },
+    {
+      "question": "Which of the following is an example of application software?",
+      "choices": ["Windows", "Microsoft Word", "BIOS", "Linux kernel"],
+      "answer": "Microsoft Word",
+      "explanation": "Microsoft Word is application software used for word processing."
+    },
+    {
+      "question": "What is a computer network?",
+      "choices": ["A single computer system", "A group of programs", "A collection of computers connected together", "A website"],
+      "answer": "A collection of computers connected together",
+      "explanation": "A network allows computers to share data and resources."
+    },
+    {
+      "question": "Which of the following is a strong password?",
+      "choices": ["123456", "password", "P@ssw0rd123!", "qwerty"],
+      "answer": "P@ssw0rd123!",
+      "explanation": "A strong password includes upper/lowercase letters, numbers, and symbols."
+    },
+    {
+      "question": "Which file type is typically used for images?",
+      "choices": [".doc", ".jpg", ".mp3", ".exe"],
+      "answer": ".jpg",
+      "explanation": "'.jpg' is a common file format used for image files."
+    }
+  ]
+  

@@ -1,32 +1,62 @@
 [
   {
+    "question": "Which subatomic particle has a negative charge?",
+    "choices": ["Proton", "Neutron", "Electron", "Nucleus"],
+    "answer": "Electron",
+    "explanation": "Electrons are negatively charged particles that orbit the nucleus."
+  },
+  {
     "question": "What is the chemical symbol for Sodium?",
-    "choices": ["So", "Na", "Sn", "S"],
+    "choices": ["S", "Na", "So", "Sn"],
     "answer": "Na",
-    "explanation": "The chemical symbol for Sodium is Na, from the Latin word 'Natrium'."
+    "explanation": "The symbol for Sodium is 'Na', from its Latin name 'Natrium'."
   },
   {
-    "question": "Which of the following is a noble gas?",
-    "choices": ["Oxygen", "Hydrogen", "Nitrogen", "Neon"],
-    "answer": "Neon",
-    "explanation": "Neon is a noble gas found in Group 18 of the periodic table."
-  },
-  {
-    "question": "What is the pH value of a neutral solution?",
-    "choices": ["0", "7", "14", "1"],
+    "question": "What is the pH of a neutral solution?",
+    "choices": ["0", "7", "14", "5"],
     "answer": "7",
-    "explanation": "A neutral solution has a pH of 7."
+    "explanation": "A neutral solution has a pH of 7, such as pure water."
   },
   {
-    "question": "What is the main gas responsible for causing acid rain?",
-    "choices": ["Carbon dioxide", "Oxygen", "Sulfur dioxide", "Nitrogen"],
-    "answer": "Sulfur dioxide",
-    "explanation": "Sulfur dioxide reacts with water in the atmosphere to form sulfuric acid, causing acid rain."
+    "question": "Which of the following is a compound?",
+    "choices": ["Oxygen", "Iron", "Carbon dioxide", "Hydrogen"],
+    "answer": "Carbon dioxide",
+    "explanation": "Carbon dioxide (CO₂) is a compound made of carbon and oxygen."
   },
   {
-    "question": "Which of the following substances is an element?",
-    "choices": ["Water", "Carbon", "Salt", "Air"],
-    "answer": "Carbon",
-    "explanation": "Carbon is a pure element, whereas water, salt, and air are mixtures or compounds."
+    "question": "What type of bond is formed when electrons are shared between atoms?",
+    "choices": ["Ionic bond", "Metallic bond", "Hydrogen bond", "Covalent bond"],
+    "answer": "Covalent bond",
+    "explanation": "Covalent bonds involve sharing of electrons between non-metal atoms."
+  },
+  {
+    "question": "Which gas is produced when hydrochloric acid reacts with zinc?",
+    "choices": ["Oxygen", "Hydrogen", "Carbon dioxide", "Nitrogen"],
+    "answer": "Hydrogen",
+    "explanation": "Acids react with metals like zinc to produce hydrogen gas."
+  },
+  {
+    "question": "What is the chemical formula of water?",
+    "choices": ["H2O", "HO2", "OH", "H2"],
+    "answer": "H2O",
+    "explanation": "Water is made of two hydrogen atoms and one oxygen atom: H₂O."
+  },
+  {
+    "question": "What is the name of the process used to separate a soluble solid from a solution?",
+    "choices": ["Filtration", "Evaporation", "Distillation", "Crystallization"],
+    "answer": "Evaporation",
+    "explanation": "Evaporation removes solvent, leaving the dissolved solid behind."
+  },
+  {
+    "question": "Which metal is the most reactive?",
+    "choices": ["Gold", "Iron", "Magnesium", "Potassium"],
+    "answer": "Potassium",
+    "explanation": "Potassium is one of the most reactive metals in the reactivity series."
+  },
+  {
+    "question": "What is the atomic number of carbon?",
+    "choices": ["12", "6", "14", "8"],
+    "answer": "6",
+    "explanation": "Carbon has 6 protons in its nucleus, so its atomic number is 6."
   }
 ]

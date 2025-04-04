@@ -1,0 +1,78 @@
+[
+    {
+      "question": "Which sentence is punctuated correctly?",
+      "choices": [
+        "Lets go to the market, she said.",
+        "Let's go to the market she said.",
+        "Let's go to the market, she said.",
+        "Lets go to the market she said."
+      ],
+      "answer": "Let's go to the market, she said.",
+      "explanation": "A contraction (let's) and correct comma before the speech tag make this correct."
+    },
+    {
+      "question": "Choose the correct form of the word: She is the _____ of the two sisters.",
+      "choices": ["taller", "most tall", "tallest", "more tall"],
+      "answer": "taller",
+      "explanation": "When comparing two things, we use the comparative form 'taller'."
+    },
+    {
+      "question": "Identify the noun in the sentence: The cat slept on the sofa.",
+      "choices": ["slept", "on", "cat", "the"],
+      "answer": "cat",
+      "explanation": "'Cat' is a noun — a person, place, or thing."
+    },
+    {
+      "question": "What type of sentence is this: 'Please close the window.'",
+      "choices": ["Declarative", "Interrogative", "Exclamatory", "Imperative"],
+      "answer": "Imperative",
+      "explanation": "An imperative sentence gives a command or makes a request."
+    },
+    {
+      "question": "Which word is a synonym of 'happy'?",
+      "choices": ["sad", "joyful", "angry", "tired"],
+      "answer": "joyful",
+      "explanation": "A synonym is a word with the same or similar meaning."
+    },
+    {
+      "question": "What is the correct spelling?",
+      "choices": ["definately", "definitly", "definitely", "definetely"],
+      "answer": "definitely",
+      "explanation": "'Definitely' is the correct spelling."
+    },
+    {
+      "question": "Which sentence is in passive voice?",
+      "choices": [
+        "She wrote the essay.",
+        "The essay was written by her.",
+        "They are writing the essay.",
+        "She is writing the essay."
+      ],
+      "answer": "The essay was written by her.",
+      "explanation": "In passive voice, the subject receives the action."
+    },
+    {
+      "question": "What part of speech is the word 'quickly' in: 'He ran quickly.'",
+      "choices": ["noun", "adjective", "verb", "adverb"],
+      "answer": "adverb",
+      "explanation": "'Quickly' describes how he ran — it’s an adverb."
+    },
+    {
+      "question": "Choose the correct verb form: She _____ to school every day.",
+      "choices": ["go", "goes", "gone", "going"],
+      "answer": "goes",
+      "explanation": "Singular present tense uses 'goes' with 'she'."
+    },
+    {
+      "question": "Which of the following is an example of a simile?",
+      "choices": [
+        "He was a lion in the fight.",
+        "The stars danced in the sky.",
+        "Her smile was as bright as the sun.",
+        "Time flew by quickly."
+      ],
+      "answer": "Her smile was as bright as the sun.",
+      "explanation": "A simile compares two things using 'like' or 'as'."
+    }
+  ]
+  

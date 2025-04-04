@@ -2,66 +2,87 @@
 
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { motion } from 'framer-motion'
 
-const subjects = [
-  { slug: 'math', name: 'Mathematics' },
-  { slug: 'biology', name: 'Biology' },
-  { slug: 'chemistry', name: 'Chemistry' },
-  { slug: 'physics', name: 'Physics' }
-]
+interface Stream {
+  slug: string
+  name: string
+  description: string
+  subjects: string[]
+  groupStructure?: { [group: string]: string[] }
+}
 
-export default function MockExamPage() {
-  const { isLoaded, isSignedIn } = useUser()
+export default function MockExamsPage() {
+  const [streamSubjects, setStreamSubjects] = useState<string[]>([])
   const router = useRouter()
 
   useEffect(() => {
-    if (isLoaded && !isSignedIn) {
-      router.push('/sign-in')
+    const stored = localStorage.getItem('selected-stream')
+    if (stored) {
+      const stream: Stream = JSON.parse(stored)
+      const allSubjects = stream.groupStructure
+        ? Object.values(stream.groupStructure).flat()
+        : stream.subjects
+      setStreamSubjects(allSubjects)
     }
-  }, [isLoaded, isSignedIn])
+  }, [])
 
-  if (!isLoaded || !isSignedIn) {
-    return <p className="text-center mt-10">Loading...</p>
+  const handleStartExam = (subject: string) => {
+    router.push(`/mock-exams/${subject.toLowerCase().replace(/\s+/g, '-')}`)
   }
 
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Mock Exam Subjects</h1>
+        <h1 className="text-2xl font-bold">📝 Mock Exams</h1>
+        <Link href="/mock-exams/results">
+          <Button variant="outline">View Results</Button>
+        </Link>
       </div>
-      <Link href="/mock-exams/results" className="text-sm text-blue-600 underline block mb-4 text-right">
-        📊 View My Results
-      </Link>
-      <Button variant="outline" onClick={() => router.push('/dashboard')}>
-        ← Back to Dashboard
-      </Button>
 
+      {streamSubjects.length === 0 ? (
+        <p className="text-sm text-muted-foreground">
+          No subjects found for your stream. Please select a stream from your dashboard.
+        </p>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2">
+          {streamSubjects.map((subject, index) => (
+            <motion.div
+              key={subject}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle>{subject}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Start practicing questions for {subject}
+                  </p>
+                  <Button
+                    onClick={() => handleStartExam(subject)}
+                    className="mt-3 w-full"
+                  >
+                    Take Exam
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      )}
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {subjects.map((subject) => (
-          <Link key={subject.slug} href={`/mock-exams/${subject.slug}`}>
-            <Card className="hover:shadow-md cursor-pointer">
-              <CardHeader>
-                <CardTitle>{subject.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-              <p className="text-sm text-muted-foreground">Start practicing questions for {subject.name}</p>
-              <button
-                  onClick={() => router.push(`/mock-exams/${subject.slug}`)}
-                  className="mt-3 w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition"
-                >
-                  Take Exam
-                </button>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+      <div className="pt-4">
+        <Link href="/dashboard" className="text-sm text-blue-600 underline">
+          ← Back to Dashboard
+        </Link>
       </div>
     </div>
   )

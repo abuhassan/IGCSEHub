@@ -1,3 +1,5 @@
+// FILE: /components/dashboard/DashboardLayout.tsx
+
 'use client'
 
 import Link from 'next/link'
@@ -11,9 +13,10 @@ const navItems = [
   { label: 'Subjects', href: '/subjects' },
   { label: 'Checkpoints', href: '/checkpoints' },
   { label: 'Planner', href: '/planner' },
-  { label: 'Mock Exams', href: '/mock-exams' }, // ✅ new item
+  { label: 'Mock Exams', href: '/mock-exams' },
+  { label: 'Flashcards', href: '/flashcards' },
+  { label: 'Blog', href: '/blog' }
 ]
-
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -46,8 +49,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ))}
           {role === 'admin' && (
             <Link
-              href="/admin-tools"
-              className="block px-2 py-1 text-red-600 font-medium hover:text-red-700"
+              href="/admin"
+              className={clsx(
+                "block px-2 py-1 font-medium",
+                pathname === '/admin' ? "text-red-700 bg-red-100" : "text-red-600 hover:text-red-700"
+              )}
             >
               Admin Tools
             </Link>

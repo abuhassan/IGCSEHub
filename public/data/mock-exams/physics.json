@@ -1,32 +1,62 @@
 [
   {
-    "question": "What is the SI unit of force?",
-    "choices": ["Joule", "Watt", "Newton", "Pascal"],
-    "answer": "Newton",
-    "explanation": "The SI unit of force is the Newton (N), named after Sir Isaac Newton."
-  },
-  {
-    "question": "What instrument is used to measure electric current?",
-    "choices": ["Voltmeter", "Ammeter", "Thermometer", "Galvanometer"],
-    "answer": "Ammeter",
-    "explanation": "An ammeter is used to measure the flow of electric current in a circuit."
-  },
-  {
     "question": "Which of the following is a scalar quantity?",
-    "choices": ["Velocity", "Displacement", "Force", "Temperature"],
-    "answer": "Temperature",
-    "explanation": "Temperature has magnitude only and no direction, making it a scalar quantity."
+    "choices": ["Force", "Velocity", "Acceleration", "Speed"],
+    "answer": "Speed",
+    "explanation": "Speed has magnitude only, no direction — so it’s a scalar."
   },
   {
-    "question": "What type of energy is stored in a stretched spring?",
-    "choices": ["Thermal energy", "Kinetic energy", "Gravitational potential energy", "Elastic potential energy"],
-    "answer": "Elastic potential energy",
-    "explanation": "Elastic potential energy is stored when an object is deformed elastically, such as in a stretched spring."
+    "question": "A car travels 100 km in 2 hours. What is its average speed?",
+    "choices": ["25 km/h", "50 km/h", "75 km/h", "100 km/h"],
+    "answer": "50 km/h",
+    "explanation": "Speed = distance/time = 100 km ÷ 2 h = 50 km/h."
   },
   {
-    "question": "What is the speed of light in a vacuum?",
-    "choices": ["3 x 10^8 m/s", "3 x 10^6 m/s", "3 x 10^4 m/s", "3 x 10^2 m/s"],
-    "answer": "3 x 10^8 m/s",
-    "explanation": "The speed of light in a vacuum is approximately 3 × 10^8 meters per second."
+    "question": "What instrument is used to measure current in a circuit?",
+    "choices": ["Voltmeter", "Thermometer", "Ammeter", "Ohmmeter"],
+    "answer": "Ammeter",
+    "explanation": "An ammeter measures current and is connected in series."
+  },
+  {
+    "question": "Which wave property changes when a wave passes from air into water?",
+    "choices": ["Amplitude", "Frequency", "Speed", "Wavelength"],
+    "answer": "Speed",
+    "explanation": "The speed of the wave changes due to the change in medium."
+  },
+  {
+    "question": "What is the unit of pressure?",
+    "choices": ["Pascal", "Newton", "Joule", "Watt"],
+    "answer": "Pascal",
+    "explanation": "Pressure is measured in Pascals (Pa), equal to N/m²."
+  },
+  {
+    "question": "Which of the following best describes the motion of particles in a solid?",
+    "choices": ["They move freely.", "They vibrate in fixed positions.", "They slide past each other.", "They are stationary."],
+    "answer": "They vibrate in fixed positions.",
+    "explanation": "Particles in a solid vibrate but stay in fixed positions."
+  },
+  {
+    "question": "Which quantity is measured in joules?",
+    "choices": ["Power", "Force", "Energy", "Voltage"],
+    "answer": "Energy",
+    "explanation": "Energy is measured in joules (J)."
+  },
+  {
+    "question": "The frequency of a wave is 10 Hz and its wavelength is 2 m. What is its speed?",
+    "choices": ["5 m/s", "10 m/s", "20 m/s", "100 m/s"],
+    "answer": "20 m/s",
+    "explanation": "Speed = frequency × wavelength = 10 × 2 = 20 m/s."
+  },
+  {
+    "question": "Which force keeps the Moon in orbit around the Earth?",
+    "choices": ["Magnetic force", "Gravitational force", "Friction", "Electrostatic force"],
+    "answer": "Gravitational force",
+    "explanation": "Gravitational force between the Earth and the Moon keeps it in orbit."
+  },
+  {
+    "question": "Which of the following statements about light is correct?",
+    "choices": ["It cannot travel in a vacuum.", "It is a longitudinal wave.", "It travels slower than sound.", "It is a transverse wave."],
+    "answer": "It is a transverse wave.",
+    "explanation": "Light is a transverse wave and can travel through a vacuum."
   }
 ]

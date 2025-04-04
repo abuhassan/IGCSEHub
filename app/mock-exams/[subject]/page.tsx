@@ -37,11 +37,17 @@ export default function SubjectQuizPage() {
       const subjectKey = subject as string
       const key = 'mock-results'
       const stored = JSON.parse(localStorage.getItem(key) || '{}')
-      localStorage.setItem(key, JSON.stringify({ ...stored, [subjectKey]: Math.round((score / questions.length) * 100) }))
+      localStorage.setItem(key, JSON.stringify({
+        ...stored,
+        [subjectKey]: Math.round((score / questions.length) * 100),
+      }))
 
       const answerKey = 'mock-answers'
       const answerStore = JSON.parse(localStorage.getItem(answerKey) || '{}')
-      localStorage.setItem(answerKey, JSON.stringify({ ...answerStore, [subjectKey]: answers }))
+      localStorage.setItem(answerKey, JSON.stringify({
+        ...answerStore,
+        [subjectKey]: answers,
+      }))
     }
   }, [showResult, subject, score, questions.length, answers])
 
@@ -82,17 +88,9 @@ export default function SubjectQuizPage() {
       <div className="p-6 space-y-4">
         <h1 className="text-2xl font-bold">Results</h1>
         <p className="text-lg">You scored {score} out of {questions.length}</p>
-
-        <div className="flex flex-wrap gap-4 pt-2">
-          <Button onClick={() => router.push('/mock-exams')} variant="secondary">
-            ← Back to Subjects
-          </Button>
-          <Button onClick={() => router.push('/dashboard')} variant="outline">
-            🏠 Back to Dashboard
-          </Button>
-          <Button onClick={() => router.push(`/mock-exams/review/${subject}`)}>
-            📘 Review My Answers
-          </Button>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button onClick={() => router.push('/mock-exams?refresh=1')}>Back to Subjects</Button>
+          <Button onClick={() => router.push(`/mock-exams/review/${subject}`)} variant="outline">Review My Answers</Button>
         </div>
       </div>
     )
@@ -101,6 +99,10 @@ export default function SubjectQuizPage() {
   const currentQ = questions[currentIndex]
   return (
     <div className="p-6 space-y-4">
+      <Link href="/mock-exams" className="text-sm text-blue-600 underline block mb-4">
+        ← Back to Subjects
+      </Link>
+
       <Card>
         <CardHeader>
           <CardTitle>Question {currentIndex + 1} of {questions.length}</CardTitle>

@@ -1,0 +1,23 @@
+
+
+[
+    {
+      "slug": "science-a",
+      "name": "Science A",
+      "description": "Ideal for students aiming for careers in medicine, engineering, and science-related fields.",
+      "subjects": ["math", "physics", "chemistry", "biology", "english"]
+    },
+    {
+      "slug": "science-b",
+      "name": "Science B",
+      "description": "Includes core science subjects with a focus on computer science and ICT.",
+      "subjects": ["math", "physics", "chemistry", "ict", "english"]
+    },
+    {
+      "slug": "arts-commerce",
+      "name": "Arts & Commerce",
+      "description": "Suitable for students interested in literature, humanities, and business studies.",
+      "subjects": ["english", "ict"]
+    }
+  ]
+  

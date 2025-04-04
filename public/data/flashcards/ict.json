@@ -1,0 +1,24 @@
+
+[
+    {
+      "question": "What does CPU stand for?",
+      "answer": "Central Processing Unit."
+    },
+    {
+      "question": "What is the function of RAM in a computer?",
+      "answer": "RAM stores data temporarily for quick access by the CPU."
+    },
+    {
+      "question": "What is the purpose of an operating system?",
+      "answer": "It manages computer hardware and software resources."
+    },
+    {
+      "question": "What is the Internet?",
+      "answer": "A global network of interconnected computers."
+    },
+    {
+      "question": "What is a spreadsheet used for?",
+      "answer": "To organize, calculate, and analyze data using cells."
+    }
+  ]
+  

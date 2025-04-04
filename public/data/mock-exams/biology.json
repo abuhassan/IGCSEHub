@@ -1,33 +1,62 @@
 [
-    {
-      "question": "What is the process by which green plants make their own food?",
-      "choices": ["Photosynthesis", "Respiration", "Transpiration", "Digestion"],
-      "answer": "Photosynthesis",
-      "explanation": "Photosynthesis is the process where plants use sunlight to synthesize food from carbon dioxide and water."
-    },
-    {
-      "question": "Which part of the cell contains genetic material?",
-      "choices": ["Cytoplasm", "Nucleus", "Cell membrane", "Chloroplast"],
-      "answer": "Nucleus",
-      "explanation": "The nucleus contains DNA, which carries genetic information."
-    },
-    {
-      "question": "What gas is absorbed by plants during photosynthesis?",
-      "choices": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
-      "answer": "Carbon Dioxide",
-      "explanation": "Plants absorb carbon dioxide from the atmosphere for use in photosynthesis."
-    },
-    {
-      "question": "Which of the following is NOT a component of blood?",
-      "choices": ["Red blood cells", "White blood cells", "Platelets", "Nephrons"],
-      "answer": "Nephrons",
-      "explanation": "Nephrons are the functional units of the kidneys, not part of blood."
-    },
-    {
-      "question": "What is the main function of the small intestine?",
-      "choices": ["Water absorption", "Digestion of food", "Production of insulin", "Oxygen transport"],
-      "answer": "Digestion of food",
-      "explanation": "The small intestine is responsible for the majority of nutrient digestion and absorption."
-    }
-  ]
-  
+  {
+    "question": "Which structure controls the movement of substances in and out of a cell?",
+    "choices": ["Nucleus", "Cytoplasm", "Cell membrane", "Mitochondria"],
+    "answer": "Cell membrane",
+    "explanation": "The cell membrane is semi-permeable and regulates substance entry and exit."
+  },
+  {
+    "question": "Which organelle is the site of respiration in cells?",
+    "choices": ["Chloroplast", "Nucleus", "Mitochondria", "Ribosome"],
+    "answer": "Mitochondria",
+    "explanation": "Mitochondria produce energy through aerobic respiration."
+  },
+  {
+    "question": "What is the function of red blood cells?",
+    "choices": ["Fight infection", "Clot blood", "Transport oxygen", "Produce hormones"],
+    "answer": "Transport oxygen",
+    "explanation": "Red blood cells carry oxygen using haemoglobin."
+  },
+  {
+    "question": "Which part of the plant cell contains chlorophyll?",
+    "choices": ["Nucleus", "Cell wall", "Chloroplast", "Vacuole"],
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts contain chlorophyll for photosynthesis."
+  },
+  {
+    "question": "What is osmosis?",
+    "choices": ["Movement of water through a membrane", "Movement of glucose", "Diffusion of oxygen", "Active transport of ions"],
+    "answer": "Movement of water through a membrane",
+    "explanation": "Osmosis is the diffusion of water through a partially permeable membrane."
+  },
+  {
+    "question": "Which gas is released during photosynthesis?",
+    "choices": ["Carbon dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+    "answer": "Oxygen",
+    "explanation": "Oxygen is a by-product of photosynthesis in plants."
+  },
+  {
+    "question": "What is the role of enzymes in the body?",
+    "choices": ["Slow down reactions", "Store energy", "Speed up reactions", "Transport molecules"],
+    "answer": "Speed up reactions",
+    "explanation": "Enzymes are biological catalysts that speed up chemical reactions."
+  },
+  {
+    "question": "What is the genetic material found in most cells?",
+    "choices": ["RNA", "Protein", "Chromatin", "DNA"],
+    "answer": "DNA",
+    "explanation": "DNA contains the genetic instructions used in growth and function."
+  },
+  {
+    "question": "Which process describes the breakdown of food to release energy?",
+    "choices": ["Photosynthesis", "Respiration", "Digestion", "Transpiration"],
+    "answer": "Respiration",
+    "explanation": "Respiration releases energy from glucose."
+  },
+  {
+    "question": "Which organ system is responsible for transporting nutrients and oxygen?",
+    "choices": ["Respiratory system", "Excretory system", "Nervous system", "Circulatory system"],
+    "answer": "Circulatory system",
+    "explanation": "The circulatory system transports blood, nutrients, and oxygen throughout the body."
+  }
+]

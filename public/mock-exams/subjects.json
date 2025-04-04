@@ -1,0 +1,9 @@
+[
+    { "name": "Biology", "slug": "biology" },
+    { "name": "Chemistry", "slug": "chemistry" },
+    { "name": "Physics", "slug": "physics" },
+    { "name": "Math", "slug": "math" },
+    { "name": "English", "slug": "english" },
+    { "name": "ICT", "slug": "ict" }
+  ]
+  
